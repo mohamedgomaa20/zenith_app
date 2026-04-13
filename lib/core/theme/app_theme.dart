@@ -1,168 +1,143 @@
 import 'package:flutter/material.dart';
 
+import 'app_colors.dart';
+
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
-    useMaterial3: true,
-    fontFamily: "Tajawal",
-    scaffoldBackgroundColor: Color(0xffF6F7F9),
-    splashFactory: NoSplash.splashFactory,
-    highlightColor: Colors.transparent,
-    colorScheme: ColorScheme.light(
-      primary: Color(0xff15B86C),
-      primaryContainer: Color(0xffFFFFFF),
+    brightness: Brightness.light,
+    primaryColor: AppColors.primary,
+    scaffoldBackgroundColor: AppColors.lightBackground,
+    cardColor: AppColors.lightSurface,
 
-      onSurface: Color(0xff161F1B),
-      outlineVariant: Color(0xffA0A0A0),
-
-      outline: Color(0xff6A6A6A),
-      secondary: Color(0xff3A4640),
+    textTheme: TextTheme(
+      headlineSmall: TextStyle(
+        color: AppColors.lightText,
+        fontWeight: FontWeight.bold,
+      ),
+      bodyMedium: TextStyle(color: AppColors.lightText),
+      bodySmall: TextStyle(color: AppColors.lightSubText),
     ),
+
     appBarTheme: AppBarTheme(
-      titleTextStyle: TextStyle(fontSize: 20, color: Color(0xff161F1B)),
-      foregroundColor: Color(0xff161F1B),
-      backgroundColor: Color(0xffF6F7F9),
-      surfaceTintColor: Color(0xffF6F7F9),
+      backgroundColor: AppColors.lightBackground,
+      foregroundColor: AppColors.lightText,
+      elevation: 0,
+      centerTitle: true,
     ),
 
-    iconTheme: IconThemeData(color: Color(0xff161F1B)),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xff15B86C),
-        foregroundColor: Color(0xffFFFCFC),
-        fixedSize: Size(double.infinity, 44),
-        textStyle: TextStyle(fontSize: 16),
+        backgroundColor: AppColors.primary,
+        foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.black,
-        textStyle: TextStyle(fontSize: 16),
+        backgroundColor: AppColors.lightSurface,
+        side: .none,
       ),
     ),
-    dialogTheme: DialogThemeData(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: Color(0xff15B86C)),
-      ),
-    ),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: Color(0xff15B86C),
-      foregroundColor: Color(0xffFFFCFC),
-      shape: RoundedRectangleBorder(borderRadius: .circular(100)),
-      extendedTextStyle: TextStyle(fontSize: 16),
-    ),
-    bottomSheetTheme: BottomSheetThemeData(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(foregroundColor: AppColors.primary),
     ),
 
-    listTileTheme: ListTileThemeData(
-      titleTextStyle: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-        color: Color(0xff161F1B),
-        fontFamily: "Tajawal",
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.lightSurface,
+      contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+      hintStyle: TextStyle(color: AppColors.lightSubText),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide.none,
       ),
-    ),
-    dividerTheme: DividerThemeData(color: Color(0xffD1DAD6)),
-    textSelectionTheme: TextSelectionThemeData(
-      cursorColor: Color(0xff15B86C),
-      selectionColor: Color(0xff15B86C),
-      selectionHandleColor: Color(0xff15B86C),
-    ),
-    popupMenuTheme: PopupMenuThemeData(
-      color: Color(0xffF6F7F9),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: Color(0xff15B86C)),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide.none,
       ),
-    ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      type: .fixed,
-      backgroundColor: Color(0xffF6F7F9),
-      selectedItemColor: Color(0xff15B86C),
-      unselectedItemColor: Color(0xff3A4640),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: AppColors.primary, width: 1.5),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: Colors.red),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: Colors.red),
+      ),
+      errorStyle: TextStyle(color: Colors.redAccent, fontSize: 12),
     ),
   );
   static ThemeData darkTheme = ThemeData(
-    useMaterial3: true,
-    fontFamily: "Tajawal",
-    scaffoldBackgroundColor: Color(0xff181818),
-    splashFactory: NoSplash.splashFactory,
-    highlightColor: Colors.transparent,
-    colorScheme: ColorScheme.dark(
-      primary: Color(0xff15B86C),
-      primaryContainer: Color(0xff282828),
-      onSurface: Color(0xffFFFFFF),
-      outlineVariant: Color(0xffA0A0A0),
-      outline: Color(0xff6A6A6A),
-      secondary: Color(0xffC6C6C6),
-    ),
-    appBarTheme: AppBarTheme(
-      titleTextStyle: TextStyle(fontSize: 20, color: Color(0xffFFFCFC)),
-      foregroundColor: Color(0xffFFFCFC),
-      backgroundColor: Color(0xff181818),
-      surfaceTintColor: Color(0xff181818),
+    brightness: Brightness.dark,
+    primaryColor: AppColors.primary,
+    scaffoldBackgroundColor: AppColors.darkBackground,
+    cardColor: AppColors.darkSurface,
+
+    textTheme: TextTheme(
+      headlineSmall: TextStyle(
+        color: AppColors.darkText,
+        fontWeight: FontWeight.bold,
+      ),
+      bodyMedium: TextStyle(color: AppColors.darkText),
+      bodySmall: TextStyle(color: AppColors.darkSubText),
     ),
 
-    iconTheme: IconThemeData(color: Color(0xffFFFCFC)),
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.darkBackground,
+      foregroundColor: AppColors.darkText,
+      elevation: 0,
+    ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xff15B86C),
-        foregroundColor: Color(0xffFFFCFC),
-        textStyle: TextStyle(fontSize: 16),
+        backgroundColor: AppColors.primary,
+        foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     ),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: Color(0xff15B86C),
-      foregroundColor: Color(0xffFFFCFC),
-      shape: RoundedRectangleBorder(borderRadius: .circular(100)),
-      extendedTextStyle: TextStyle(fontSize: 16),
-    ),
+
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        foregroundColor: Color(0xffFFFCFC),
-        textStyle: TextStyle(fontSize: 16),
+        foregroundColor: Colors.white,
+        backgroundColor: AppColors.darkSurface,
+        side: .none,
       ),
     ),
-    dialogTheme: DialogThemeData(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: Color(0xff15B86C)),
-      ),
-    ),
-    bottomSheetTheme: BottomSheetThemeData(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(foregroundColor: AppColors.primary),
     ),
 
-    listTileTheme: ListTileThemeData(
-      titleTextStyle: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-        color: Color(0xffFFFCFC),
-        fontFamily: "Tajawal",
-      ),
-    ),
-    dividerTheme: DividerThemeData(color: Color(0xff6E6E6E)),
-    textSelectionTheme: TextSelectionThemeData(
-      cursorColor: Color(0xff15B86C),
-      selectionColor: Color(0xff15B86C),
-      selectionHandleColor: Color(0xff15B86C),
-    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.darkSurface,
 
-    popupMenuTheme: PopupMenuThemeData(
-      color: Color(0xff181818),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: Color(0xff15B86C)),
+      contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+      hintStyle: TextStyle(color: AppColors.darkSubText),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide.none,
       ),
-    ),
-
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      type: .fixed,
-      backgroundColor: Color(0xff181818),
-      selectedItemColor: Color(0xff15B86C),
-      unselectedItemColor: Color(0xffC6C6C6),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: AppColors.primary, width: 1.5),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: Colors.red),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: Colors.red),
+      ),
+      errorStyle: TextStyle(color: Colors.redAccent, fontSize: 12),
     ),
   );
 }

@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zenith_app/core/theme/app_theme.dart';
 import 'package:zenith_app/core/theme/theme_manager/theme_manager_bloc.dart';
+import 'package:zenith_app/features/auth/presentation/screens/forgot_password_screen.dart';
+import 'package:zenith_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:zenith_app/features/home/presentation/screens/home_Screen.dart';
 
 import 'core/services/preferences_manager.dart';
+import 'features/auth/presentation/screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +36,7 @@ class ZenithApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: state.themeMode,
-          home: HomeScreen(),
+          home: LoginScreen(),
         );
       },
     );

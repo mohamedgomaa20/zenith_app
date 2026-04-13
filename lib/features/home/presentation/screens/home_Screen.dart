@@ -13,9 +13,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircularProgressIndicator(),
-            SizedBox(height: 40),
-            Text("Hello Mohamed Gomaa", style: TextStyle(fontSize: 35)),
+             Text("Hello Mohamed Gomaa", style: TextStyle(fontSize: 35)),
             SizedBox(height: 40),
             BlocBuilder<ThemeManagerBloc, ThemeManagerState>(
               builder: (context, state) {
