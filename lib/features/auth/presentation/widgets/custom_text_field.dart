@@ -12,6 +12,7 @@ class CustomAuthField extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.onChanged,
+    this.maxLines = 1,
   });
 
   final String label;
@@ -23,6 +24,7 @@ class CustomAuthField extends StatefulWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final Function(String)? onChanged;
+  final int? maxLines;
 
   @override
   State<CustomAuthField> createState() => _CustomAuthFieldState();
@@ -58,6 +60,7 @@ class _CustomAuthFieldState extends State<CustomAuthField> {
           keyboardType: widget.keyboardType,
           onChanged: widget.onChanged,
           style: theme.textTheme.bodyMedium,
+          maxLines: widget.maxLines,
           decoration: InputDecoration(
             hintText: widget.hint,
             contentPadding: const EdgeInsets.symmetric(
