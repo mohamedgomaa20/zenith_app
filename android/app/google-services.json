@@ -1,0 +1,198 @@
+{
+  "project_info": {
+    "project_number": "127376482692",
+    "project_id": "sholar-chat-2",
+    "storage_bucket": "sholar-chat-2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127376482692:android:67762c893865fb08663dd1",
+        "android_client_info": {
+          "package_name": "com.example.al_masar_day_8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127376482692-d3bbvmud3o6k9k9vqbjdfvj9vtp6uai7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz1ZsYRKb89ipq9Qb-sUA28QmOye9jjB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127376482692-d3bbvmud3o6k9k9vqbjdfvj9vtp6uai7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "127376482692-1iaonltabn69cj81grt0sdddddmfiao6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gomaa.zenith.zenithApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127376482692:android:43444eb9d9d4e32b663dd1",
+        "android_client_info": {
+          "package_name": "com.example.chat_app_35"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127376482692-d3bbvmud3o6k9k9vqbjdfvj9vtp6uai7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz1ZsYRKb89ipq9Qb-sUA28QmOye9jjB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127376482692-d3bbvmud3o6k9k9vqbjdfvj9vtp6uai7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "127376482692-1iaonltabn69cj81grt0sdddddmfiao6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gomaa.zenith.zenithApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127376482692:android:f6d21380709fcc79663dd1",
+        "android_client_info": {
+          "package_name": "com.example.chat_depi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127376482692-d3bbvmud3o6k9k9vqbjdfvj9vtp6uai7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz1ZsYRKb89ipq9Qb-sUA28QmOye9jjB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127376482692-d3bbvmud3o6k9k9vqbjdfvj9vtp6uai7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "127376482692-1iaonltabn69cj81grt0sdddddmfiao6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gomaa.zenith.zenithApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127376482692:android:67567d0b32fd570b663dd1",
+        "android_client_info": {
+          "package_name": "com.gomaa.zenith.zenith_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127376482692-kq9hjsp6d7qilspo9jfi4l2a3rfa9pae.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gomaa.zenith.zenith_app",
+            "certificate_hash": "8e5bb793de8aa5438463db3b2a126cf2d59fbc29"
+          }
+        },
+        {
+          "client_id": "127376482692-d3bbvmud3o6k9k9vqbjdfvj9vtp6uai7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz1ZsYRKb89ipq9Qb-sUA28QmOye9jjB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127376482692-d3bbvmud3o6k9k9vqbjdfvj9vtp6uai7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "127376482692-1iaonltabn69cj81grt0sdddddmfiao6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gomaa.zenith.zenithApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127376482692:android:805bae5b69d2ec25663dd1",
+        "android_client_info": {
+          "package_name": "com.mohamed.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127376482692-d3bbvmud3o6k9k9vqbjdfvj9vtp6uai7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz1ZsYRKb89ipq9Qb-sUA28QmOye9jjB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127376482692-d3bbvmud3o6k9k9vqbjdfvj9vtp6uai7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "127376482692-1iaonltabn69cj81grt0sdddddmfiao6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gomaa.zenith.zenithApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
