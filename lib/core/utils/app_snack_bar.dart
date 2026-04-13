@@ -37,7 +37,7 @@ class AppSnackBar {
     Color backgroundColor = const Color(0xff282828),
     Color textColor = const Color(0xff6D6D6D),
     IconData? icon,
-    Duration duration = const Duration(seconds: 2),
+    Duration duration = const Duration(seconds: 3),
   }) {
     final messenger = ScaffoldMessenger.maybeOf(context);
     if (messenger == null) return;
