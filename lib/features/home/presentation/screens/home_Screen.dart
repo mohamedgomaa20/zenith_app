@@ -10,24 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-             Text("Hello Mohamed Gomaa", style: TextStyle(fontSize: 35)),
-            SizedBox(height: 40),
-            BlocBuilder<ThemeManagerBloc, ThemeManagerState>(
-              builder: (context, state) {
-                return SwitchListTile(
-                  value: state.themeMode == ThemeMode.dark,
-                  onChanged: (_) {
-                    context.read<ThemeManagerBloc>().add(ToggleThemeEvent());
-                  },
-                  title: Text("Dark Mode"),
-                );
-              },
-            ),
-          ],
-        ),
+        child: Text("Home Screen", style: TextStyle(fontSize: 35)),
       ),
     );
   }

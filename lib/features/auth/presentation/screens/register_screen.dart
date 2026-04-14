@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zenith_app/core/utils/app_snack_bar.dart';
+import 'package:zenith_app/features/main_app/MainScreen.dart';
 
 import '../../../../core/common_widgets/custom_button.dart';
 import '../../../../core/common_widgets/theme_toggle_button.dart';
@@ -43,6 +44,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
           if (state.status == AuthStatus.registerSuccess) {
             AppSnackBar.success(context, "Account created successfully");
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MainScreen()),
+            );
           }
         },
         child: GestureDetector(

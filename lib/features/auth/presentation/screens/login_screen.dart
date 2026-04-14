@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zenith_app/features/home/presentation/screens/home_Screen.dart';
+import 'package:zenith_app/features/favorite/presentation/screens/favorite_Screen.dart';
+import 'package:zenith_app/features/main_app/MainScreen.dart';
 
 import '../../../../core/common_widgets/custom_button.dart';
 import '../../../../core/common_widgets/theme_toggle_button.dart';
@@ -52,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
+              MaterialPageRoute(builder: (context) => MainScreen()),
             );
           }
         },

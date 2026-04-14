@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zenith_app/core/theme/app_theme.dart';
 import 'package:zenith_app/core/theme/theme_manager/theme_manager_bloc.dart';
-
 import 'core/services/preferences_manager.dart';
 import 'features/auth/data/services/auth_service.dart';
 import 'features/auth/presentation/auth_bloc/auth_bloc.dart';
