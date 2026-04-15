@@ -71,15 +71,14 @@ class AppTheme {
       errorStyle: TextStyle(color: Colors.redAccent, fontSize: 12),
     ),
 
-      bottomNavigationBarTheme:  BottomNavigationBarThemeData(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor:AppColors.lightSurface,
-        selectedItemColor:  AppColors.primary,
-        unselectedItemColor: Colors.grey,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-      )
-
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: AppColors.lightSurface,
+      selectedItemColor: AppColors.primary,
+      unselectedItemColor: Colors.grey,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+    ),
   );
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
@@ -150,15 +149,13 @@ class AppTheme {
       errorStyle: TextStyle(color: Colors.redAccent, fontSize: 12),
     ),
 
-    bottomNavigationBarTheme:  BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,
-      backgroundColor:AppColors.darkSurface,
-      selectedItemColor:  AppColors.primary,
+      backgroundColor: AppColors.darkSurface,
+      selectedItemColor: AppColors.primary,
       unselectedItemColor: Colors.grey,
       showSelectedLabels: false,
       showUnselectedLabels: false,
-    )
-
-
+    ),
   );
 }
