@@ -36,7 +36,7 @@ class AppTheme {
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.black,
         backgroundColor: AppColors.lightSurface,
-        side: .none,
+        side: BorderSide.none,
       ),
     ),
     textButtonTheme: TextButtonThemeData(
@@ -113,7 +113,7 @@ class AppTheme {
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.white,
         backgroundColor: AppColors.darkSurface,
-        side: .none,
+        side: BorderSide.none,
       ),
     ),
     textButtonTheme: TextButtonThemeData(

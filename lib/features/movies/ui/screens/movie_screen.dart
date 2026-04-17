@@ -60,6 +60,8 @@ class _MovieCard extends StatelessWidget {
             child: Image.network(
               movie.fullPosterPath, // Using the extension we wrote earlier!
               fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
               errorBuilder: (context, error, stackTrace) =>
                   const Center(child: Icon(Icons.broken_image)),
             ),
