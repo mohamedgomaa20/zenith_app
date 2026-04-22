@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zenith_app/core/theme/app_theme.dart';
 import 'package:zenith_app/core/theme/theme_manager/theme_manager_bloc.dart';
+import 'package:zenith_app/features/main_app/MainScreen.dart';
 import 'package:zenith_app/features/splash/presentation/screens/splash_screen.dart';
 import 'core/services/preferences_manager.dart';
 import 'features/auth/data/services/auth_service.dart';
 import 'features/auth/presentation/auth_bloc/auth_bloc.dart';
 import 'features/home/presentation/blocs/game_bloc/game_bloc.dart';
+import 'features/home/presentation/screens/lobby_screen.dart';
 import 'features/movies/data/repos/movie_repository.dart';
 import 'features/movies/services/movie_services.dart';
 import 'features/movies/ui/movie_cubit.dart';
@@ -56,10 +58,10 @@ class ZenithApp extends StatelessWidget {
       builder: (context, state) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: AppTheme.lightTheme,
+          theme: AppTheme.darkTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: state.themeMode,
-          home: SplashScreen(),
+          home: MainScreen(),
         );
       },
     );

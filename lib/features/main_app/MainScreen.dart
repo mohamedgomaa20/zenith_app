@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:zenith_app/features/cart/presentation/screens/cart_Screen.dart';
-import 'package:zenith_app/features/favorite/presentation/screens/favorite_Screen.dart';
+ import 'package:zenith_app/features/favorite/presentation/screens/favorite_Screen.dart';
 import 'package:zenith_app/features/home/presentation/screens/lobby_screen.dart';
 
 import 'package:zenith_app/features/profile/presentation/screens/profile_screen.dart';
+
+import '../search/presentation/screens/search_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -18,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     LobbyScreen(),
     FavoriteScreen(),
-    CartScreen(),
+    SearchScreen(),
     ProfileScreen(),
   ];
 
@@ -54,8 +55,8 @@ class _MainScreenState extends State<MainScreen> {
               label: "Favorite",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag_outlined),
-              label: "Cart",
+              icon: Icon(Icons.search_outlined),
+              label: "Search",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_outline),
