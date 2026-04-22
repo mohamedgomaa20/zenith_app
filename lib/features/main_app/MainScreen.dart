@@ -7,6 +7,7 @@ import 'package:zenith_app/features/profile/presentation/screens/profile_screen.
 
 import '../auth/presentation/auth_bloc/auth_bloc.dart';
 import '../auth/presentation/screens/login_screen.dart';
+import '../profile/presentation/profile_bloc/profile_bloc.dart';
 import '../search/presentation/screens/search_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -23,8 +24,14 @@ class _MainScreenState extends State<MainScreen> {
     LobbyScreen(),
     FavoriteScreen(),
     SearchScreen(),
-    ProfileScreen(),
+    SettingsScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<ProfileBloc>().add(FetchProfileEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +78,8 @@ class _MainScreenState extends State<MainScreen> {
                 label: "Search",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline),
-                label: "Profile",
+                icon: Icon(Icons.settings),
+                label: "Settings",
               ),
             ],
           ),
