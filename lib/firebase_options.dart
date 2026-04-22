@@ -46,6 +46,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '127376482692',
     projectId: 'sholar-chat-2',
     authDomain: 'sholar-chat-2.firebaseapp.com',
+    databaseURL: 'https://sholar-chat-2-default-rtdb.firebaseio.com',
     storageBucket: 'sholar-chat-2.firebasestorage.app',
     measurementId: 'G-CY61TG941S',
   );
@@ -55,6 +56,7 @@ class DefaultFirebaseOptions {
     appId: '1:127376482692:android:67567d0b32fd570b663dd1',
     messagingSenderId: '127376482692',
     projectId: 'sholar-chat-2',
+    databaseURL: 'https://sholar-chat-2-default-rtdb.firebaseio.com',
     storageBucket: 'sholar-chat-2.firebasestorage.app',
   );
 
@@ -63,7 +65,9 @@ class DefaultFirebaseOptions {
     appId: '1:127376482692:ios:f26414a58f2acee9663dd1',
     messagingSenderId: '127376482692',
     projectId: 'sholar-chat-2',
+    databaseURL: 'https://sholar-chat-2-default-rtdb.firebaseio.com',
     storageBucket: 'sholar-chat-2.firebasestorage.app',
+    androidClientId: '127376482692-kq9hjsp6d7qilspo9jfi4l2a3rfa9pae.apps.googleusercontent.com',
     iosClientId: '127376482692-1iaonltabn69cj81grt0sdddddmfiao6.apps.googleusercontent.com',
     iosBundleId: 'com.gomaa.zenith.zenithApp',
   );
@@ -73,7 +77,9 @@ class DefaultFirebaseOptions {
     appId: '1:127376482692:ios:f26414a58f2acee9663dd1',
     messagingSenderId: '127376482692',
     projectId: 'sholar-chat-2',
+    databaseURL: 'https://sholar-chat-2-default-rtdb.firebaseio.com',
     storageBucket: 'sholar-chat-2.firebasestorage.app',
+    androidClientId: '127376482692-kq9hjsp6d7qilspo9jfi4l2a3rfa9pae.apps.googleusercontent.com',
     iosClientId: '127376482692-1iaonltabn69cj81grt0sdddddmfiao6.apps.googleusercontent.com',
     iosBundleId: 'com.gomaa.zenith.zenithApp',
   );
@@ -84,7 +90,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '127376482692',
     projectId: 'sholar-chat-2',
     authDomain: 'sholar-chat-2.firebaseapp.com',
+    databaseURL: 'https://sholar-chat-2-default-rtdb.firebaseio.com',
     storageBucket: 'sholar-chat-2.firebasestorage.app',
     measurementId: 'G-88K2VBQE3K',
   );
+
 }
