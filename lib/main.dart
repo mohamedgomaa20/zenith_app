@@ -8,11 +8,10 @@ import 'package:zenith_app/features/splash/presentation/screens/splash_screen.da
 import 'core/services/preferences_manager.dart';
 import 'features/auth/data/services/auth_service.dart';
 import 'features/auth/presentation/auth_bloc/auth_bloc.dart';
-import 'features/auth/presentation/screens/login_screen.dart';
+import 'features/home/presentation/blocs/game_bloc/game_bloc.dart';
 import 'features/movies/data/repos/movie_repository.dart';
 import 'features/movies/services/movie_services.dart';
 import 'features/movies/ui/movie_cubit.dart';
-import 'features/movies/ui/screens/movie_screen.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -39,9 +38,9 @@ void main() async {
         ),
         BlocProvider(create: (_) => AuthBloc(AuthService())),
         BlocProvider(
-          create: (context) => MovieCubit(MovieRepository(MovieService(dio))),
-          child: const MoviesScreen(),
+          create: (_) => MovieCubit(MovieRepository(MovieService(dio))),
         ),
+        BlocProvider(create: (_) => GameBloc()),
       ],
       child: const ZenithApp(),
     ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:zenith_app/features/cart/presentation/screens/cart_Screen.dart';
 import 'package:zenith_app/features/favorite/presentation/screens/favorite_Screen.dart';
-import 'package:zenith_app/features/home/presentation/screens/home_Screen.dart';
+import 'package:zenith_app/features/home/presentation/screens/lobby_screen.dart';
+
 import 'package:zenith_app/features/profile/presentation/screens/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
-    HomeScreen(),
+    LobbyScreen(),
     FavoriteScreen(),
     CartScreen(),
     ProfileScreen(),
