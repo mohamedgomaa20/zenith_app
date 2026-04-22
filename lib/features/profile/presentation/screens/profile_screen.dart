@@ -69,11 +69,22 @@ class ProfileScreen extends StatelessWidget {
               title: "Log Out",
               isLogout: true,
               onTap: () {
-                context.read<AuthBloc>().add(LogoutEvent());
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
-                  (route) => false,
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title:   Text("Log Out"),
+                    content:   Text("Are you sure you want to log out?"),
+                    actions: [
+                      TextButton(onPressed: () => Navigator.pop(context), child:   Text("Cancel")),
+                      TextButton(
+                        onPressed: () {
+                          context.read<AuthBloc>().add(LogoutEvent());
+                          Navigator.pop(context);
+                        },
+                        child:   Text("Log Out", style: TextStyle(color: Colors.red)),
+                      ),
+                    ],
+                  ),
                 );
               },
             ),

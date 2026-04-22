@@ -51,9 +51,11 @@ class _LoginScreenState extends State<LoginScreen> {
               state.status == AuthStatus.googleSuccess) {
             AppSnackBar.success(context, "Login successful");
 
-            Navigator.pushReplacement(
+            Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => MainScreen()),
+
+              (route) => false,
             );
           }
         },
