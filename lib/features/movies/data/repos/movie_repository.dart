@@ -17,4 +17,13 @@ class MovieRepository {
       rethrow;
     }
   }
+
+  Future<List<Movie>> searchMovies(String query) async {
+    try {
+      final response = await _movieService.searchMovies(query: query);
+      return response.results;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
