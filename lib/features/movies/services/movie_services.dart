@@ -20,6 +20,21 @@ class MovieService {
     }
   }
 
+  Future<MovieResponse> searchMovies({required String query, int page = 1}) async {
+    try {
+      final response = await _dio.get(
+        'search/movie',
+        queryParameters: {
+          'query': query,
+          'page': page,
+        },
+      );
+      return MovieResponse.fromJson(response.data);
+    } on DioException catch (e) {
+      throw _handleDioError(e);
+    }
+  }
+
   String _handleDioError(DioException error) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:

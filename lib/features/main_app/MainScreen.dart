@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zenith_app/features/favorite/presentation/screens/favorite_Screen.dart';
 import 'package:zenith_app/features/home/presentation/screens/lobby_screen.dart';
+import 'package:zenith_app/features/movies/presentation/screens/movie_screen.dart';
 
 import 'package:zenith_app/features/profile/presentation/screens/profile_screen.dart';
 
@@ -23,7 +24,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     LobbyScreen(),
     FavoriteScreen(),
-    SearchScreen(),
+    MoviesScreen(),
     SettingsScreen(),
   ];
 

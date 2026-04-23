@@ -32,19 +32,19 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        Future.delayed(  Duration(seconds: 2), () {
+        Future.delayed(Duration(seconds: 2), () {
           if (!mounted) return;
 
           switch (state.status) {
             case AuthStatus.onboardingRequired:
-              _navigate(context,   OnboardingScreen());
+              _navigate(context, OnboardingScreen());
               break;
             case AuthStatus.loginSuccess:
-              _navigate(context,   MainScreen());
+              _navigate(context, MainScreen());
               break;
             case AuthStatus.initial:
             case AuthStatus.error:
-              _navigate(context,   LoginScreen());
+              _navigate(context, LoginScreen());
               break;
             default:
               break;

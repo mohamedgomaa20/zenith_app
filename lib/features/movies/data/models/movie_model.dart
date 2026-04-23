@@ -14,6 +14,7 @@ abstract class Movie with _$Movie {
     @JsonKey(name: 'poster_path') String? posterPath,
     @JsonKey(name: 'vote_average') required double voteAverage,
     @JsonKey(name: 'release_date') required String releaseDate,
+    @JsonKey(name: 'genre_ids') @Default([]) List<int> genreIds,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
