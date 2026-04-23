@@ -13,21 +13,13 @@ import '../widgets/details/section_label.dart';
 import '../widgets/details/watch_button.dart';
 import '../widgets/details/favorite_button.dart';
 
-class MovieDetailsScreen extends StatefulWidget {
+class MovieDetailsScreen extends StatelessWidget {
   final Movie movie;
 
   const MovieDetailsScreen({super.key, required this.movie});
 
   @override
-  State<MovieDetailsScreen> createState() => _MovieDetailsScreenState();
-}
-
-class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
-  bool _isFavorite = false;
-
-  @override
   Widget build(BuildContext context) {
-    final movie = widget.movie;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final year = movie.releaseDate.isNotEmpty
         ? movie.releaseDate.split('-')[0]
@@ -41,14 +33,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
             expandedHeight: 500,
             pinned: true,
             leading: const DetailBackButton(),
-            actions: [
-              FavoriteButton(
-                isFavorite: _isFavorite,
-                onTap: () {
-                  setState(() => _isFavorite = !_isFavorite);
-                },
-              ),
-            ],
+            actions: [FavoriteButton(movie: movie)],
             flexibleSpace: FlexibleSpaceBar(
               background: PosterHero(movie: movie, isDark: isDark),
             ),

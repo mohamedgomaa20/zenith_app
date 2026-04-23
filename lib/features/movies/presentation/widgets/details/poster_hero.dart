@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../data/models/movie_model.dart';
 import '../../../../../core/theme/app_colors.dart';
@@ -16,12 +17,16 @@ class PosterHero extends StatelessWidget {
       children: [
         Hero(
           tag: 'movie_poster_${movie.id}',
-          child: Image.network(
-            movie.fullPosterPath,
+          child: CachedNetworkImage(
+            imageUrl: movie.fullPosterPath,
             fit: BoxFit.cover,
-            errorBuilder: (_, __, ___) => Container(
+            errorWidget: (context, url, error) => Container(
               color: isDark ? AppColors.surface2 : AppColors.grey,
-              child: const Icon(Icons.broken_image, size: 60, color: Colors.white38),
+              child: const Icon(
+                Icons.movie_filter_outlined,
+                size: 100,
+                color: Colors.white38,
+              ),
             ),
           ),
         ),

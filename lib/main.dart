@@ -8,6 +8,8 @@ import 'package:zenith_app/features/splash/presentation/screens/splash_screen.da
 import 'core/services/preferences_manager.dart';
 import 'features/auth/data/services/auth_service.dart';
 import 'features/auth/presentation/auth_bloc/auth_bloc.dart';
+import 'features/favorite/presentation/favorites_bloc/favorites_bloc.dart';
+import 'features/favorite/services/favorites_service.dart';
 import 'features/home/presentation/blocs/game_bloc/game_bloc.dart';
 import 'features/movies/data/repos/movie_repository.dart';
 import 'features/movies/services/movie_services.dart';
@@ -20,18 +22,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await PreferencesManager().init();
-  final dio = Dio(
-    BaseOptions(
-      baseUrl: 'https://api.themoviedb.org/3/',
-      connectTimeout: const Duration(seconds: 5),
-      receiveTimeout: const Duration(seconds: 3),
-      headers: {
-        'Authorization':
-            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMzk3YTQzODRhYWI1NGIyN2RkOTY5MTQ0YWNmY2JjNiIsIm5iZiI6MTc3NjIwMzQwNC41NTAwMDAyLCJzdWIiOiI2OWRlYjY4YzZiMDE3NGRiOTIxZGE5YzciLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.glUCeuC1t2tXMIaDt8kelxKLLhDbbLyzMh4aI902UPQ',
-        'accept': 'application/json',
-      },
-    ),
-  );
+
   runApp(
     MultiBlocProvider(
       providers: [
@@ -39,14 +30,17 @@ void main() async {
           create: (context) => ThemeManagerBloc()..add(LoadThemeEvent()),
         ),
         BlocProvider(create: (_) => AuthBloc(AuthService())),
-        BlocProvider(
-          create: (_) => MovieCubit(MovieRepository(MovieService(dio))),
-        ),
+        // BlocProvider(
+        //   create: (_) => MovieCubit(MovieRepository(MovieService(dio))),
+        // ),
         BlocProvider(create: (_) => GameBloc()),
 
         BlocProvider(
           create: (context) =>
               ProfileBloc(ProfileService())..add(FetchProfileEvent()),
+        ),
+        BlocProvider(
+          create: (context) => FavoritesBloc(FavoritesService())..add(WatchFavoritesEvent()),
         ),
       ],
       child: const ZenithApp(),

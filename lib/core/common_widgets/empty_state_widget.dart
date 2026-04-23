@@ -26,11 +26,11 @@ class EmptyStateWidget extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 80),
             child: Text(
               subLabel,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey,fontSize: 15),
             ),
           ),
         ],

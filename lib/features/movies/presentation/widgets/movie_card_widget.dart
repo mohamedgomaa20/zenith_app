@@ -1,7 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
 import '../../data/models/movie_model.dart';
 import '../screens/movie_details_screen.dart';
+import 'details/favorite_button.dart';
 
 class MovieCardWidget extends StatelessWidget {
   final Movie movie;
@@ -25,12 +26,12 @@ class MovieCardWidget extends StatelessWidget {
             children: [
               Hero(
                 tag: 'movie_poster_${movie.id}',
-                child: Image.network(
-                  movie.fullPosterPath,
+                child: CachedNetworkImage(
+                  imageUrl: movie.fullPosterPath,
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
-                  errorBuilder: (_, _, _) => const Center(
+                  errorWidget: (context, url, error) => const Center(
                     child: Icon(Icons.movie_filter_outlined, size: 60),
                   ),
                 ),
@@ -103,19 +104,8 @@ class MovieCardWidget extends StatelessWidget {
               ),
               Positioned(
                 top: 10,
-                right: 10,
-                child: CircleAvatar(
-                  backgroundColor: Colors.black26,
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.favorite_border,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      // TODO: Handle favorite button press
-                    },
-                  ),
-                ),
+                right: 0,
+                child: FavoriteButton(movie: movie),
               ),
             ],
           ),
