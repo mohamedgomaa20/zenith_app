@@ -129,9 +129,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final backgroundColor = isDark
-        ? AppColors.darkBackground
-        : AppColors.lightBackground;
+
     final cardColor = isDark ? AppColors.surface2 : Colors.grey.shade100;
 
     return BlocListener<ProfileBloc, ProfileState>(
@@ -146,10 +144,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         }
       },
       child: Scaffold(
-        backgroundColor: backgroundColor,
         appBar: AppBar(
           title: const Text("Security"),
-          backgroundColor: backgroundColor,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios),
             onPressed: () => Navigator.pop(context),
