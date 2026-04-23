@@ -44,9 +44,10 @@ class AppSnackBar {
     messenger.hideCurrentSnackBar();
     messenger.showSnackBar(
       SnackBar(
+
         backgroundColor: backgroundColor,
         behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(20),
+        margin: EdgeInsets.only(top: 20,right: 20,left: 20,bottom: MediaQuery.of(context).size.height - 160,),
         dismissDirection: DismissDirection.horizontal,
         duration: duration,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:zenith_app/core/constants/app_constants.dart';
 import 'package:zenith_app/features/auth/presentation/screens/login_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -12,6 +14,21 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController();
   bool isLastPage = false;
+
+  Future<void> _navigateAndFinish(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(AppConstants.kOnboardingSeen, true);
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => LoginScreen()),
+          (route) => false,
+    );
+  }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +84,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             top: 50,
             right: 20,
             child: GestureDetector(
-              onTap: () {
-                _controller.jumpToPage(2);
+              onTap: () async {
+                await _navigateAndFinish(context);
               },
               child: const Text(
                 "SKIP",
@@ -106,14 +123,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       if (isLastPage) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoginScreen(),
-                          ),
-                        );
+                        await _navigateAndFinish(context);
                       } else {
                         _controller.nextPage(
                           duration: const Duration(milliseconds: 500),
@@ -134,6 +146,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
     );
   }
+
+
 
   Widget buildPage({
     required String image,

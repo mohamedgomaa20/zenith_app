@@ -2,8 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zenith_app/core/constants/app_constants.dart';
 import 'package:zenith_app/core/theme/app_theme.dart';
 import 'package:zenith_app/core/theme/theme_manager/theme_manager_bloc.dart';
+import 'package:zenith_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:zenith_app/features/main_app/MainScreen.dart';
 import 'package:zenith_app/features/splash/presentation/screens/splash_screen.dart';
 import 'core/services/preferences_manager.dart';
@@ -14,6 +16,8 @@ import 'features/home/presentation/screens/lobby_screen.dart';
 import 'features/movies/data/repos/movie_repository.dart';
 import 'features/movies/services/movie_services.dart';
 import 'features/movies/ui/movie_cubit.dart';
+import 'features/profile/data/services/profile_service.dart';
+import 'features/profile/presentation/profile_bloc/profile_bloc.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -43,6 +47,11 @@ void main() async {
           create: (_) => MovieCubit(MovieRepository(MovieService(dio))),
         ),
         BlocProvider(create: (_) => GameBloc()),
+
+        BlocProvider(
+          create: (context) =>
+              ProfileBloc(ProfileService())..add(FetchProfileEvent()),
+        ),
       ],
       child: const ZenithApp(),
     ),
@@ -61,7 +70,7 @@ class ZenithApp extends StatelessWidget {
           theme: AppTheme.darkTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: state.themeMode,
-          home: MainScreen(),
+          home: SplashScreen(),
         );
       },
     );

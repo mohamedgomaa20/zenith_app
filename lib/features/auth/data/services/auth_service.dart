@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -5,19 +6,40 @@ import '../models/user_data_class.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
+
+  Future<void> _ensureUserExists(User user, {String? name}) async {
+    final userDoc = _db.collection('users').doc(user.uid);
+    final doc = await userDoc.get();
+
+    if (!doc.exists) {
+      await userDoc.set({
+        'userId': user.uid,
+        'name': name ?? user.displayName ?? 'User',
+        'email': user.email,
+        'photoUrl': user.photoURL,
+        'createdAt': FieldValue.serverTimestamp(),
+      });
+    }
+  }
 
   Future<void> login(UserDataClass user) async {
-    await _auth.signInWithEmailAndPassword(
+    final credential = await _auth.signInWithEmailAndPassword(
       email: user.email.trim(),
       password: user.password.trim(),
     );
+    await _ensureUserExists(credential.user!);
   }
 
   Future<void> register(UserDataClass user) async {
-    await _auth.createUserWithEmailAndPassword(
+    final credential = await _auth.createUserWithEmailAndPassword(
       email: user.email.trim(),
       password: user.password.trim(),
     );
+    if (user.name != null) {
+      await credential.user!.updateDisplayName(user.name);
+    }
+    await _ensureUserExists(credential.user!, name: user.name);
   }
 
   Future<void> forgotPassword(String email) async {
@@ -39,7 +61,10 @@ class AuthService {
       idToken: googleAuth.idToken,
     );
 
-    await _auth.signInWithCredential(credential);
+    final UserCredential userCredential = await _auth.signInWithCredential(
+      credential,
+    );
+    await _ensureUserExists(userCredential.user!);
   }
 
   Future<void> logout() async {

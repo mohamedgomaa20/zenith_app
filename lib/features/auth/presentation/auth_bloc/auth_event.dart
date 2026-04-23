@@ -24,3 +24,4 @@ class ForgotPasswordEvent extends AuthEvent {
 class GoogleLoginEvent extends AuthEvent {}
 
 class LogoutEvent extends AuthEvent {}
+class CheckAuthEvent extends AuthEvent {}

@@ -4,19 +4,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zenith_app/features/auth/presentation/auth_bloc/auth_bloc.dart';
 import 'package:zenith_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:zenith_app/features/profile/presentation/screens/edit_profile_screen.dart';
+import 'package:zenith_app/features/profile/presentation/screens/change_password_screen.dart';
 import '../../../../core/common_widgets/theme_toggle_button.dart';
 import '../../../../core/theme/theme_manager/theme_manager_bloc.dart';
 import '../widgets/profile_header.dart';
 import '../widgets/profile_menu_item.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: Text("Settings"),
         centerTitle: true,
         actions: [ThemeToggleButton()],
       ),
@@ -37,15 +38,23 @@ class ProfileScreen extends StatelessWidget {
               },
             ),
             ProfileMenuItem(
+              icon: Icons.lock_outline,
+              title: "Password & Security",
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChangePasswordScreen(),
+                  ),
+                );
+              },
+            ),
+            ProfileMenuItem(
               icon: Icons.notifications_none,
               title: "Notifications",
               onTap: () {},
             ),
-            ProfileMenuItem(
-              icon: Icons.settings_outlined,
-              title: "Settings",
-              onTap: () {},
-            ),
+
             BlocBuilder<ThemeManagerBloc, ThemeManagerState>(
               builder: (context, state) {
                 return ProfileMenuItem(
@@ -69,11 +78,28 @@ class ProfileScreen extends StatelessWidget {
               title: "Log Out",
               isLogout: true,
               onTap: () {
-                context.read<AuthBloc>().add(LogoutEvent());
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
-                  (route) => false,
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text("Log Out"),
+                    content: Text("Are you sure you want to log out?"),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text("Cancel"),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          context.read<AuthBloc>().add(LogoutEvent());
+                          Navigator.pop(context);
+                        },
+                        child: Text(
+                          "Log Out",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ],
+                  ),
                 );
               },
             ),
