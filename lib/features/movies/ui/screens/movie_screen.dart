@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/models/movie_model.dart';
 import '../movie_cubit.dart';
 import '../movie_state.dart';
+import '../widgets/movie_card.dart';
 import '../widgets/shimmer_movie_card.dart';
 
 class MoviesScreen extends StatefulWidget {
@@ -87,7 +88,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
                   itemCount: hasReachedMax ? movies.length : movies.length + 2,
                   itemBuilder: (context, index) {
                     if (index < movies.length) {
-                      return _MovieCard(movie: movies[index]);
+                      return MovieCard(movie: movies[index]);
                     } else {
                       // Bottom loading indicators
                       return const ShimmerMovieCard();
@@ -108,75 +109,6 @@ class _MoviesScreenState extends State<MoviesScreen> {
           );
         },
         child: const Icon(Icons.arrow_upward),
-      ),
-    );
-  }
-}
-
-class _MovieCard extends StatelessWidget {
-  final Movie movie;
-  const _MovieCard({required this.movie});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      clipBehavior: Clip.antiAlias,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Stack(
-              children: [
-                Positioned.fill(
-                  child: Image.network(
-                    movie.fullPosterPath,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) =>
-                        const Center(child: Icon(Icons.broken_image, size: 40)),
-                  ),
-                ),
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 6,
-                      vertical: 2,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.7),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.star, color: Colors.amber, size: 14),
-                        const SizedBox(width: 4),
-                        Text(
-                          movie.voteAverage.toStringAsFixed(1),
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              movie.title,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-            ),
-          ),
-        ],
       ),
     );
   }
