@@ -128,12 +128,12 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( List<Movie> movies)?  success,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( List<Movie> movies,  bool hasReachedMax)?  success,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
 return loading();case _Success() when success != null:
-return success(_that.movies);case _Error() when error != null:
+return success(_that.movies,_that.hasReachedMax);case _Error() when error != null:
 return error(_that.message);case _:
   return orElse();
 
@@ -152,12 +152,12 @@ return error(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( List<Movie> movies)  success,required TResult Function( String message)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( List<Movie> movies,  bool hasReachedMax)  success,required TResult Function( String message)  error,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loading():
 return loading();case _Success():
-return success(_that.movies);case _Error():
+return success(_that.movies,_that.hasReachedMax);case _Error():
 return error(_that.message);case _:
   throw StateError('Unexpected subclass');
 
@@ -175,12 +175,12 @@ return error(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( List<Movie> movies)?  success,TResult? Function( String message)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( List<Movie> movies,  bool hasReachedMax)?  success,TResult? Function( String message)?  error,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
 return loading();case _Success() when success != null:
-return success(_that.movies);case _Error() when error != null:
+return success(_that.movies,_that.hasReachedMax);case _Error() when error != null:
 return error(_that.message);case _:
   return null;
 
@@ -257,7 +257,7 @@ String toString() {
 
 
 class _Success implements MovieState {
-  const _Success(final  List<Movie> movies): _movies = movies;
+  const _Success(final  List<Movie> movies, this.hasReachedMax): _movies = movies;
   
 
  final  List<Movie> _movies;
@@ -267,6 +267,7 @@ class _Success implements MovieState {
   return EqualUnmodifiableListView(_movies);
 }
 
+ final  bool hasReachedMax;
 
 /// Create a copy of MovieState
 /// with the given fields replaced by the non-null parameter values.
@@ -278,16 +279,16 @@ _$SuccessCopyWith<_Success> get copyWith => __$SuccessCopyWithImpl<_Success>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success&&const DeepCollectionEquality().equals(other._movies, _movies));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success&&const DeepCollectionEquality().equals(other._movies, _movies)&&(identical(other.hasReachedMax, hasReachedMax) || other.hasReachedMax == hasReachedMax));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_movies));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_movies),hasReachedMax);
 
 @override
 String toString() {
-  return 'MovieState.success(movies: $movies)';
+  return 'MovieState.success(movies: $movies, hasReachedMax: $hasReachedMax)';
 }
 
 
@@ -298,7 +299,7 @@ abstract mixin class _$SuccessCopyWith<$Res> implements $MovieStateCopyWith<$Res
   factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) = __$SuccessCopyWithImpl;
 @useResult
 $Res call({
- List<Movie> movies
+ List<Movie> movies, bool hasReachedMax
 });
 
 
@@ -315,10 +316,11 @@ class __$SuccessCopyWithImpl<$Res>
 
 /// Create a copy of MovieState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? movies = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? movies = null,Object? hasReachedMax = null,}) {
   return _then(_Success(
 null == movies ? _self._movies : movies // ignore: cast_nullable_to_non_nullable
-as List<Movie>,
+as List<Movie>,null == hasReachedMax ? _self.hasReachedMax : hasReachedMax // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

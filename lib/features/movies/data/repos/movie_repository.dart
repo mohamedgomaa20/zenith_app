@@ -7,7 +7,7 @@ class MovieRepository {
   MovieRepository(this._movieService);
 
   /// Fetches popular movies and returns them as a clean list.
-  /// This is what your Bloc or Cubit will call.
+  /// This is what Cubit will call.
   Future<List<Movie>> fetchPopularMovies({int page = 1}) async {
     try {
       final response = await _movieService.getPopularMovies(page: page);
