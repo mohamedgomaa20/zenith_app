@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 // to run the auto-generated files:
 part 'movie_model.freezed.dart';
+
 part 'movie_model.g.dart';
 // use dart run build_runner build --delete-conflicting-outputs
 

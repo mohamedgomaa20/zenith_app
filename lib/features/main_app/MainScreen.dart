@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zenith_app/features/favorite/presentation/screens/favorite_Screen.dart';
 import 'package:zenith_app/features/home/presentation/screens/lobby_screen.dart';
-import 'package:zenith_app/features/movies/presentation/screens/movie_screen.dart';
+import 'package:zenith_app/features/movies/presentation/screens/search_screen.dart';
+import 'package:zenith_app/features/movies/ui/screens/movie_screen.dart';
 
 import 'package:zenith_app/features/profile/presentation/screens/profile_screen.dart';
 
@@ -75,8 +76,8 @@ class _MainScreenState extends State<MainScreen> {
                 label: "Favorite",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.search_outlined),
-                label: "Search",
+                icon: Icon(Icons.movie_creation_outlined),
+                label: "Explore",
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),

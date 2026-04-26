@@ -1,5 +1,3 @@
-
-
 class RoomMember {
   final String id;
   final String name;
@@ -14,16 +12,16 @@ class RoomMember {
   });
 
   factory RoomMember.fromJson(Map<String, dynamic> json) => RoomMember(
-    id:      json['id'] as String,
-    name:    json['name'] as String,
-    emoji:   json['emoji'] as String,
+    id: json['id'] as String,
+    name: json['name'] as String,
+    emoji: json['emoji'] as String,
     isReady: json['isReady'] as bool? ?? false,
   );
 
   Map<String, dynamic> toJson() => {
-    'id':      id,
-    'name':    name,
-    'emoji':   emoji,
+    'id': id,
+    'name': name,
+    'emoji': emoji,
     'isReady': isReady,
   };
 }
@@ -41,14 +39,14 @@ class RoomVote {
 
   factory RoomVote.fromJson(Map<String, dynamic> json) => RoomVote(
     memberId: json['memberId'] as String,
-    movieId:  json['movieId'] as int,
-    liked:    json['liked'] as bool,
+    movieId: json['movieId'] as int,
+    liked: json['liked'] as bool,
   );
 
   Map<String, dynamic> toJson() => {
     'memberId': memberId,
-    'movieId':  movieId,
-    'liked':    liked,
+    'movieId': movieId,
+    'liked': liked,
   };
 }
 
@@ -57,7 +55,7 @@ class GameRoom {
   final String hostId;
   final List<RoomMember> members;
   final List<RoomVote> votes;
-  final String status; 
+  final String status;
   final int? matchedMovieId;
 
   GameRoom({
@@ -70,7 +68,9 @@ class GameRoom {
   });
 
   bool get hasMatch => matchedMovieId != null;
+
   int get memberCount => members.length;
+
   bool get canStart => memberCount >= 2;
 
   int? checkForMatch() {
@@ -94,20 +94,22 @@ class GameRoom {
   }
 
   factory GameRoom.fromJson(Map<String, dynamic> json) => GameRoom(
-    code:           json['code'] as String,
-    hostId:         json['hostId'] as String,
-    members:        (json['members'] as Map<dynamic, dynamic>? ?? {})
-        .values.map((v) => RoomMember.fromJson(Map<String, dynamic>.from(v as Map))).toList(),
-    votes:          (json['votes'] as Map<dynamic, dynamic>? ?? {})
-        .values.map((v) => RoomVote.fromJson(Map<String, dynamic>.from(v as Map))).toList(),
-    status:         json['status'] as String? ?? 'waiting',
+    code: json['code'] as String,
+    hostId: json['hostId'] as String,
+    members: (json['members'] as Map<dynamic, dynamic>? ?? {}).values
+        .map((v) => RoomMember.fromJson(Map<String, dynamic>.from(v as Map)))
+        .toList(),
+    votes: (json['votes'] as Map<dynamic, dynamic>? ?? {}).values
+        .map((v) => RoomVote.fromJson(Map<String, dynamic>.from(v as Map)))
+        .toList(),
+    status: json['status'] as String? ?? 'waiting',
     matchedMovieId: json['matchedMovieId'] as int?,
   );
 
   Map<String, dynamic> toJson() => {
-    'code':           code,
-    'hostId':         hostId,
-    'status':         status,
+    'code': code,
+    'hostId': hostId,
+    'status': status,
     if (matchedMovieId != null) 'matchedMovieId': matchedMovieId,
   };
 }

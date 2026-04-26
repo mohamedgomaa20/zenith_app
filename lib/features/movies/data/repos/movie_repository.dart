@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+
 import '../../services/movie_services.dart';
 import '../models/movie_model.dart';
 
@@ -7,7 +9,7 @@ class MovieRepository {
   MovieRepository(this._movieService);
 
   /// Fetches popular movies and returns them as a clean list.
-  /// This is what your Bloc or Cubit will call.
+  /// This is what Cubit will call.
   Future<List<Movie>> fetchPopularMovies({int page = 1}) async {
     try {
       final response = await _movieService.getPopularMovies(page: page);
@@ -18,9 +20,15 @@ class MovieRepository {
     }
   }
 
-  Future<List<Movie>> searchMovies(String query) async {
+  Future<List<Movie>> searchMovies({
+    required String query,
+    int page = 1,
+  }) async {
     try {
-      final response = await _movieService.searchMovies(query: query);
+      final response = await _movieService.searchMovies(
+        query: query,
+        page: page,
+      );
       return response.results;
     } catch (e) {
       rethrow;

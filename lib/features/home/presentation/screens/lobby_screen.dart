@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../movies/presentation/screens/search_screen.dart';
 import '../blocs/game_bloc/game_bloc.dart';
 import '../../../../core/utils/app_snack_bar.dart';
 import '../widgets/lobby_header.dart';
@@ -10,11 +11,13 @@ import 'waiting_screen.dart';
 
 class LobbyScreen extends StatefulWidget {
   const LobbyScreen({super.key});
+
   @override
   State<LobbyScreen> createState() => _LobbyScreenState();
 }
 
-class _LobbyScreenState extends State<LobbyScreen> with TickerProviderStateMixin {
+class _LobbyScreenState extends State<LobbyScreen>
+    with TickerProviderStateMixin {
   final _nameCtrl = TextEditingController();
   final _codeCtrl = TextEditingController();
   final _joinNameCtrl = TextEditingController();
@@ -53,7 +56,10 @@ class _LobbyScreenState extends State<LobbyScreen> with TickerProviderStateMixin
     return BlocConsumer<GameBloc, GameState>(
       listener: (context, state) {
         if (state.status == GameStatus.waiting) {
-          Navigator.push(context, MaterialPageRoute(builder: (_) => const WaitingScreen()));
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const WaitingScreen()),
+          );
         } else if (state.status == GameStatus.error && state.error != null) {
           AppSnackBar.error(context, state.error!);
         }
@@ -61,21 +67,40 @@ class _LobbyScreenState extends State<LobbyScreen> with TickerProviderStateMixin
       builder: (context, state) {
         final loading = state.status == GameStatus.loading;
         return Scaffold(
-          body: SafeArea(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-              child: Column(
-                children: [
-                  const SizedBox(height: 20),
-                  const LobbyHeader(),
-                  const SizedBox(height: 40),
-                  CreateRoomCard(controller: _nameCtrl, loading: loading, onCreate: _createRoom),
-                  const SizedBox(height: 16),
-                  const LobbyDivider(),
-                  const SizedBox(height: 16),
-                  JoinRoomCard(nameController: _joinNameCtrl, codeController: _codeCtrl, loading: loading, onJoin: _joinRoom),
-                ],
+          appBar: AppBar(
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchScreen()),
+                  );
+                },
               ),
+            ],
+          ),
+          body: SingleChildScrollView(
+            padding: const EdgeInsets.only(right: 24,left: 24, bottom: 32),
+            child: Column(
+              children: [
+                const LobbyHeader(),
+                const SizedBox(height: 40),
+                CreateRoomCard(
+                  controller: _nameCtrl,
+                  loading: loading,
+                  onCreate: _createRoom,
+                ),
+                const SizedBox(height: 16),
+                const LobbyDivider(),
+                const SizedBox(height: 16),
+                JoinRoomCard(
+                  nameController: _joinNameCtrl,
+                  codeController: _codeCtrl,
+                  loading: loading,
+                  onJoin: _joinRoom,
+                ),
+              ],
             ),
           ),
         );

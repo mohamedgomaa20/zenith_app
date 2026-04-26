@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/common_widgets/empty_state_widget.dart';
 import '../../../../core/common_widgets/error_state_widget.dart';
-import '../movie_cubit.dart';
-import '../movie_state.dart';
+import '../search_cubit.dart';
+import '../search_state.dart';
 import 'movies_grid.dart';
 import 'movies_skeleton_grid.dart';
 
@@ -13,8 +13,9 @@ class MoviesBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MovieCubit, MovieState>(
+    return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
+        final cubit = context.read<SearchCubit>();
         return state.when(
           initial: () => const EmptyStateWidget(
             icon: Icons.movie_filter_outlined,
@@ -24,7 +25,7 @@ class MoviesBody extends StatelessWidget {
           loading: () => const MoviesSkeletonGrid(),
           error: (message) => ErrorStateWidget(
             message: message,
-            onRetry: () => context.read<MovieCubit>().getPopularMovies(),
+            onRetry: () => cubit.searchMovies(cubit.lastQuery),
           ),
           success: (movies) => movies.isEmpty
               ? const EmptyStateWidget(
