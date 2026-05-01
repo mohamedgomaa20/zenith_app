@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zenith_app/core/utils/app_snack_bar.dart';
+import 'package:zenith_app/features/dummy_screen.dart';
 import 'package:zenith_app/features/main_app/MainScreen.dart';
 
 import '../../../../core/common_widgets/custom_button.dart';
@@ -44,9 +45,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
           if (state.status == AuthStatus.registerSuccess) {
             AppSnackBar.success(context, "Account created successfully");
-            Navigator.push(
+
+            Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => MainScreen()),
+              (route) => false,
             );
           }
         },
@@ -127,8 +130,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           context.read<AuthBloc>().add(
                             RegisterEvent(
                               UserDataClass(
-                                email: _emailController.text,
-                                password: _passController.text,
+                                email: _emailController.text.trim(),
+                                password: _passController.text.trim(),
+                                name: _nameController.text.trim(),
                               ),
                             ),
                           );
