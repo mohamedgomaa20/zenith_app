@@ -27,7 +27,7 @@ class PreferencesManager {
     return await _preferences.setBool(key, value);
   }
 
-  bool? getBool(String key) {
+  bool getBool(String key) {
     return _preferences.getBool(key) ?? false;
   }
 

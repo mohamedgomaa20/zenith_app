@@ -1,37 +1,67 @@
 import 'package:dio/dio.dart';
-
-import '../../services/movie_services.dart';
+import '../../../../core/errors/failure.dart';
 import '../models/movie_model.dart';
 
-class MovieRepository {
-  final MovieService _movieService;
+abstract class MovieRepository {
+  Future<List<Movie>> getPopularMovies({required int page});
+  Future<List<Movie>> getTopRatedMovies({required int page});
+  Future<List<Movie>> getNowPlayingMovies({required int page});
+  Future<List<Movie>> searchMovies({required String query, int page = 1});
+}
 
-  MovieRepository(this._movieService);
+class MovieRepositoryImpl implements MovieRepository {
+  final Dio _dio;
+  MovieRepositoryImpl(this._dio);
 
-  /// Fetches popular movies and returns them as a clean list.
-  /// This is what Cubit will call.
-  Future<List<Movie>> fetchPopularMovies({int page = 1}) async {
-    try {
-      final response = await _movieService.getPopularMovies(page: page);
-      return response.results;
-    } catch (e) {
-      // In a production app, you might return an 'Either' type or a Failure object here
-      rethrow;
-    }
-  }
+  @override
+  Future<List<Movie>> getPopularMovies({required int page}) =>
+      _fetchFromEndpoint('/movie/popular', page);
 
+  @override
+  Future<List<Movie>> getTopRatedMovies({required int page}) =>
+      _fetchFromEndpoint('/movie/top_rated', page);
+
+  @override
+  Future<List<Movie>> getNowPlayingMovies({required int page}) =>
+      _fetchFromEndpoint('/movie/now_playing', page);
+
+  @override
   Future<List<Movie>> searchMovies({
     required String query,
     int page = 1,
   }) async {
     try {
-      final response = await _movieService.searchMovies(
-        query: query,
-        page: page,
+      final response = await _dio.get(
+        '/search/movie',
+        queryParameters: {'query': query, 'page': page},
       );
-      return response.results;
+      final List results = response.data['results'];
+      return results.map((json) => Movie.fromJson(json)).toList();
     } catch (e) {
-      rethrow;
+      throw ServerFailure(e.toString());
+    }
+  }
+
+  Future<List<Movie>> _fetchFromEndpoint(String endpoint, int page) async {
+    try {
+      final response = await _dio.get(
+        endpoint,
+        queryParameters: {'page': page},
+      );
+
+      // Debug: Print the data to see what the server actually sent
+      print("API Response for $endpoint: ${response.data}");
+
+      if (response.data != null && response.data['results'] != null) {
+        final List results = response.data['results'];
+        return results.map((json) => Movie.fromJson(json)).toList();
+      }
+      return []; // Return empty list instead of crashing if null
+    } on DioException catch (e) {
+      // Catching DioException specifically gives you more detail (status codes, etc)
+      throw ServerFailure(e.response?.data['status_message'] ?? e.message);
+    } catch (e) {
+      throw ServerFailure(e.toString());
     }
   }
 }
